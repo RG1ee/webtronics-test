@@ -1,8 +1,6 @@
 import os
 
 from dotenv import load_dotenv
-from sqlalchemy.orm import declarative_base
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 
 load_dotenv()
 
@@ -21,14 +19,3 @@ class Settings:
 
 
 settings = Settings()
-
-engine = create_async_engine(settings.DB_CONFIG)
-
-
-async def get_session():
-    async_session = async_sessionmaker(engine, expire_on_commit=False)
-    async with async_session() as session:
-        yield session
-
-
-Base = declarative_base()
