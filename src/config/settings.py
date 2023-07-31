@@ -16,6 +16,7 @@ class Settings:
             DB_NAME=os.getenv("POSTGRES_DB", "postgres"),
         ),
     )
+    SECRET_KEY: str = os.getenv("TOKEN", default="YOUR_SECRET_KEY")
 
 
 settings = Settings()

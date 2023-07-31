@@ -7,7 +7,7 @@ from src.config.settings import settings
 engine = create_async_engine(settings.DB_CONFIG)
 
 
-async def get_session():
+async def get_async_session():
     async_session = async_sessionmaker(engine, expire_on_commit=False)
     async with async_session() as session:
         yield session
