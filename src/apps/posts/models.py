@@ -1,7 +1,6 @@
 import datetime
 
 from sqlalchemy import Column, DateTime, Integer, String, ForeignKey
-from sqlalchemy.orm import relationship
 
 from src.database.db import Base
 
@@ -14,5 +13,3 @@ class Post(Base):
     post_name = Column(String(256), nullable=False)
     content = Column(String(500), nullable=False)
     date_created = Column(DateTime, default=datetime.datetime.utcnow)
-
-    user = relationship("User", back_populates="posts")
