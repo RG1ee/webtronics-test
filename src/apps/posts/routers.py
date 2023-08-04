@@ -43,9 +43,9 @@ async def get_all_posts(
     user: User = Depends(current_user),
 ):
     query = select(Post).filter_by(user_id=user.id)
-    result = await session.execute(query)
+    response = await session.execute(query)
 
-    return result.scalars().all()
+    return response.scalars().unique()
 
 
 @post_router.delete(
